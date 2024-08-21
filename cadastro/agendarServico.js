@@ -1,6 +1,8 @@
-const { servicos } = require('../data.js');
-const { clientes } =  require('../data.js');
+const { agendamentos} = require('../data');
 
-function agendarServico(){};
+function agendarServico(agendamento){
+    agendamento.id = agendamentos.length + 1;
+    agendamentos.push(agendamento);
+};
 
 module.exports = agendarServico;

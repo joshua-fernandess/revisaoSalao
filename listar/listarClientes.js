@@ -1,4 +1,4 @@
-const { clientes, servicos } = require('../data');
+const { clientes } = require('../data');
 
 function listarClientes(){
     if (clientes === 0){
