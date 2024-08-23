@@ -1,7 +1,7 @@
 const { clientes } = require('../data');
 
 function listarClientes(){
-    if (clientes === 0){
+    if (clientes.length === 0){
         throw new Error('Nenhum cliente encontrado.');
     } else {
         clientes.forEach(cliente => {

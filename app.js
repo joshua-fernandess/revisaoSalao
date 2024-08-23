@@ -79,15 +79,17 @@ function menu(){
             break;
         case '7':
             listarAgendamentos();
-            let id = parseInt(prompt('Escolha o agendamento (ID) '));
+            let id = parseInt(prompt('Escolha o agendamento (ID): '));
+            let novoServico = parseInt(prompt('Digite o novo ID do serviço: '));
             let novaData = prompt('Digite a nova data de agendamento: ');
             let novoHorario = prompt('Digite o novo horário do agendamento: ');
-            atualizarAgendamento( id, {data: novaData, horario: novoHorario});
+            atualizarAgendamento( id, {idServico: novoServico, data: novaData, horario: novoHorario});
             console.log('Agendamento atualizado com sucesso!');
             menu();
             break;
         case '8':
-            listarAgendamentos();
+            let idClienteAgendamentos = parseInt(prompt('Digite o ID do cliente que deseja ver o agendamento: '));
+            listarAgendamentos(idClienteAgendamentos);
             menu();
             break;
         case '9':

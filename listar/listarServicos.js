@@ -1,8 +1,8 @@
 const { servicos } = require('../data');
 
 function listarServicos(){
-    if (servicos === 0){
-        throw new Error('Nenhum serviço encontrado.');
+    if (servicos.length === 0){
+        console.log('Nenhum serviço encontrado.');
     } else {
         servicos.forEach(servico => {
             console.log(`
