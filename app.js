@@ -12,20 +12,22 @@ const removerServico = require('./edicao/removerServico');
 const listarAgendamentos = require('./listar/listarAgendamentos');
 const listarClientes = require('./listar/listarClientes');
 const listarServicos = require('./listar/listarServicos');
+const listarTodosAgendamentos = require('./listar/listarTodosAgendamentos');
 
 function menu(){
     console.log(`
-    1. Cadastrar serviço
-    2. Cadastrar cliente
-    3. Agendar Serviço
-    4. Remover agendamento
-    5. Remover cliente 
-    6. Remover serviço
-    7. Atualizar agendamento 
-    8. Listar agendamentos
-    9. Listar clientes
+     1. Cadastrar serviço
+     2. Cadastrar cliente
+     3. Agendar Serviço
+     4. Remover agendamento
+     5. Remover cliente 
+     6. Remover serviço
+     7. Atualizar agendamento 
+     8. Listar agendamentos
+     9. Listar clientes
     10. Listar serviços
-    11. Sair
+    11. Listas todos os agendamentos
+    12. Sair
     `);
 
     let opcao = prompt('Digite a opção desejada: ');
@@ -48,7 +50,7 @@ function menu(){
             menu();
             break;
         case '3':
-            let idCliente = prompt('Qual é o ID do cliente que deseja agendar? ');
+            let idCliente = parseInt(prompt('Qual é o ID do cliente que deseja agendar? '));
             let idServico = prompt('Qual é ID do serviço? ');
             let data = prompt('Digite a data que desejar marcar o agendamento: ');
             let horario = prompt('Digite o horário para o agendamento: ');
@@ -57,7 +59,7 @@ function menu(){
             menu();
             break;
         case '4':
-            listarAgendamentos();
+            listarTodosAgendamentos();
             delAgendamento = parseInt(prompt('Digite o ID do agendamento para remover: '));
             removerAgendamento(delAgendamento);
             console.log('Agendamento removido com sucesso!');
@@ -78,12 +80,13 @@ function menu(){
             menu();
             break;
         case '7':
-            listarAgendamentos();
+            listarTodosAgendamentos();
             let id = parseInt(prompt('Escolha o agendamento (ID): '));
+            let novoCliente = parseInt(prompt('Digite o ID do cliente: '));
             let novoServico = parseInt(prompt('Digite o novo ID do serviço: '));
             let novaData = prompt('Digite a nova data de agendamento: ');
             let novoHorario = prompt('Digite o novo horário do agendamento: ');
-            atualizarAgendamento( id, {idServico: novoServico, data: novaData, horario: novoHorario});
+            atualizarAgendamento( id, {idCliente: novoCliente, idServico: novoServico, data: novaData, horario: novoHorario});
             console.log('Agendamento atualizado com sucesso!');
             menu();
             break;
@@ -101,6 +104,10 @@ function menu(){
             menu();
             break;
         case '11':
+            listarTodosAgendamentos();
+            menu();
+            break;
+        case '12':
             console.log('Saindo do sistema... Até breve!');
             process.exit();
             break;

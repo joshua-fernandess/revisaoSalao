@@ -1,7 +1,7 @@
-const { agendamentos, servicos } = require('../data');
+const { agendamentos, clientes } = require('../data');
 
 function listarAgendamentos(idCliente){
-    const agendamentosCliente = agendamentos.filter( a => a.idCliente === idCliente);
+    const agendamentosCliente = agendamentos.filter( agendamento => agendamento.idCliente === idCliente);
 
     if(agendamentosCliente.length === 0){
         console.log(`Nenhum agendamento encontrado para o cliente com ID ${idCliente}.`);
